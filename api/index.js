@@ -4,6 +4,9 @@ const user = require("./components/user/network");
 const app = express();
 
 // Routing
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/api/user", user);
 
 // Server
