@@ -6,6 +6,7 @@ const response = require("../../../network/response");
 router.get("/", list);
 router.get("/:id", get);
 router.post("/", upsert);
+router.put("/", upsert);
 
 // Internal functions
 function list(req, res) {
