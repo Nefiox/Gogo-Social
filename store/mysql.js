@@ -87,12 +87,23 @@ function upsert(table, data, isNew) {
   }
 }
 
-function query(table, query) {
+async function query(table, query, join) {
+  let joinQuery = "";
+  if (join) {
+    const key = Object.keys(join)[0];
+    const val = join[key];
+    joinQuery = `JOIN ${key} ON ${table}.${val}`;
+  }
+
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM ${table}`, query, (err, res) => {
-      if (err) return reject(err);
-      resolve(res[0] || null);
-    });
+    connection.query(
+      `SELECT * FROM ${table} ${joinQuery} WHERE ${table}.?`,
+      query,
+      (err, res) => {
+        if (err) return reject(err);
+        resolve(res[0] || null);
+      }
+    );
   });
 }
 

@@ -1,21 +1,19 @@
 const express = require("express");
-const secure = require("./secure");
 const router = express.Router();
+const secure = require("./secure");
 const Controller = require("./index");
 const response = require("../../../network/response");
 
 router.get("/", list);
-router.post("/follow/:id", secure("follow"), follow);
-router.get("/:id/following", following);
 router.get("/:id", get);
+router.get("/user/:userId", getByUser);
 router.post("/", upsert);
 router.put("/", secure("update"), upsert);
 
-// Internal functions
 function list(req, res, next) {
   Controller.list()
-    .then((lista) => {
-      response.success(req, res, lista, 200);
+    .then((data) => {
+      response.success(req, res, data, 200);
     })
     .catch(next);
 }
@@ -28,18 +26,12 @@ function get(req, res, next) {
 
 function upsert(req, res, next) {
   Controller.upsert(req.body)
-    .then((data) => response.success(req, res, data, 200))
-    .catch(next);
-}
-
-function follow(req, res, next) {
-  Controller.follow(req.user.id, req.params.id)
     .then((data) => response.success(req, res, data, 201))
     .catch(next);
 }
 
-function following(req, res, next) {
-  return Controller.follow(req.params.id)
+function getByUser(req, res, next) {
+  Controller.getByUser(req.params.userId)
     .then((data) => response.success(req, res, data, 200))
     .catch(next);
 }
