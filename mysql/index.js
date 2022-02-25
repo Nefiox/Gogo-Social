@@ -5,6 +5,7 @@ const router = require("./network");
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // rutas
 app.use("/", router);
