@@ -1,17 +1,17 @@
 {
   "version": 2,
   "env": {
-    "NODE_ENV": "production",
-    "MYSQL_HOST": "@mysql_host",
-    "MYSQL_USER": "@mysql_user",
-    "MYSQL_PASS": "@mysql_pass",
-    "MYSQL_DB": "@mysql_db",
-    "MYSQL_SRV_HOST": "@mysql_srv_host",
-    "MYSQL_SRV_PORT": "@mysql_srv_port",
-    "POST_PORT": "@post_port",
-    "JWT_SECRET": "@jwt_secret",
-    "REMOTE_DB": "@remote_db",
-    "API_PORT": "@api_port"
+    "NODE_ENV": "",
+    "MYSQL_HOST": "",
+    "MYSQL_USER": "",
+    "MYSQL_PASS": "",
+    "MYSQL_DB": "",
+    "MYSQL_SRV_HOST": "",
+    "MYSQL_SRV_PORT": "",
+    "POST_PORT": "",
+    "JWT_SECRET": "",
+    "REMOTE_DB": "",
+    "API_PORT": ""
   },
   "builds": [
     {
