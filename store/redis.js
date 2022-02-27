@@ -14,14 +14,16 @@ function list(table) {
 
       let res = data || null;
       if (data) {
-        res = JSON.stringify(data);
+        res = JSON.parse(data);
       }
       resolve(res);
     });
   });
 }
 
-// function get(table, id) {}
+function get(table, id) {
+  return list(table + "_" + id);
+}
 
 async function upsert(table, data) {
   let key = table;
@@ -34,6 +36,6 @@ async function upsert(table, data) {
 
 module.exports = {
   list,
-  //   get,
+  get,
   upsert,
 };
